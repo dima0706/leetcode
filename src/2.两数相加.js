@@ -48,6 +48,10 @@ var addTwoNumbers = function (l1, l2) {
 //     arr.unshift(...new Array(maxLength - arr.length))
 //   }
 
+//   const toReverseArray = function(count) {
+//     return String(count).split('').reverse().map(val => Number(val))
+//   }
+
 //   let maxLength = l1.length;
 //   if (l2.length > maxLength) {
 //     maxLength = l2.length;
@@ -61,7 +65,7 @@ var addTwoNumbers = function (l1, l2) {
 //   for (let i = maxLength - 1; i >= 0; i--) {
 //     const [num1 = 0, num2 = 0] = [l1[i], l2[i]];
 //     const count = num1 + num2 + (preCountArr.shift() || 0);
-//     let [sum, ...preCountArr2] = String(count).split('').reverse().map(val => Number(val));
+//     let [sum, ...preCountArr2] = toReverseArray(count);
 //     arr.push(sum);
 //     preCountArr2.forEach((val, valIdx) => {
 //       if (preCountArr[valIdx] === undefined) {
@@ -71,6 +75,11 @@ var addTwoNumbers = function (l1, l2) {
 //       }
 //     });
 //   }
+  
+//   let preCount = 0;
+//   preCountArr.forEach((val, valIdx) => {
+//     preCount += val * Math.pow(10, valIdx);
+//   });
 
-//   return arr.concat(preCountArr);
+//   return arr.concat(toReverseArray(preCount));
 // }
