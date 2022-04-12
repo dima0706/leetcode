@@ -45,18 +45,10 @@ var findMedianSortedArrays = function(nums1, nums2) {
     return findMedianSortedArrays([], nums1.slice(0, -1));
   }
 
-  if (nums1.length + nums2.length === 1) {
-    nums1.length === 1 ? nums1[0] : nums2[0];
-  }
-  
   if (nums1[nums1.length - 1] > nums2[nums2.length - 1]) {
     nums1.pop();
   } else {
     nums2.pop();
-  }
-
-  if (nums1.length + nums2.length === 1) {
-    nums1.length === 1 ? nums1[0] : nums2[0];
   }
 
   return findMedianSortedArrays(nums1, nums2);
