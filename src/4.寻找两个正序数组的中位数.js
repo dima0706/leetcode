@@ -38,14 +38,7 @@ var findMedianSortedArrays = function(nums1, nums2) {
     nums2.shift();
   }
 
-  if (nums1.length === 0) {
-    return findMedianSortedArrays([], nums2.slice(0, -1));
-  }
-  if (nums2.length === 0) {
-    return findMedianSortedArrays([], nums1.slice(0, -1));
-  }
-
-  if (nums1[nums1.length - 1] > nums2[nums2.length - 1]) {
+  if ((nums1[nums1.length - 1] || 0) > (nums2[nums2.length - 1] || 0)) {
     nums1.pop();
   } else {
     nums2.pop();
