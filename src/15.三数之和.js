@@ -19,7 +19,6 @@ var threeSum = function (nums) {
   let arr = [];
   let n = nums.length;
 
-  let j = 0;
   for (let i = 0; i < n; i++) {
     if (nums[i] > 0) {
       return arr;
@@ -42,7 +41,7 @@ var threeSum = function (nums) {
           while(nums[right] === nums[right - 1]) {
             right--;
           }
-          left;
+          left++;
           right--;
         }
       } else if (nums[i] + nums[left] + nums[right] > 0) {
