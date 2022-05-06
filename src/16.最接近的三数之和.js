@@ -13,27 +13,47 @@
 var threeSumClosest = function(nums, target) {
   nums.sort((a, b) => a - b);
 
-  let result = [0];
-  let closeNum = Infinity;
+  let closeSum = Infinity;
 
-  for (let i = 0; i < nums.length - 2; i++) {
+  function upgradeCloseSum(num) {
+    if (closeSum === Infinity || Math.abs(num - target) < Math.abs(closeSum - target)) {
+      closeSum = num;
+    }
+  }
+  
+
+  for (let i = 0; i < nums.length; i++) {
+    if (i > 0 && nums[i] === nums[i - 1]) {
+      continue;
+    }
     let left = i + 1;
-    while (left < nums.length - 1) {
-      let right = nums.length - 1;
-      while (left < right) {
-        const curCloseNum = Math.abs(nums[i] + nums[left] + nums[right] - target);
-        if (curCloseNum < closeNum) {
-          closeNum = curCloseNum;
-          result = [nums[i], nums[left], nums[right]];
-        }
-        right--;
+    let right = nums.length - 1;
+
+    while(left < right) {
+      const s = nums[i] + nums[left] + nums[right];
+      if (s === target) {
+        return s;
       }
-      left++;
+      upgradeCloseSum(s);
+      if (s > target) {
+        let rightTemp = right - 1;
+        while (left < rightTemp && nums[rightTemp] === nums[right]) {
+          rightTemp--;
+        }
+        right = rightTemp
+      }
+      if (s < target) {
+        let leftTemp = left + 1;
+        while (leftTemp < right && nums[leftTemp] === nums[left]) {
+          leftTemp++;
+        }
+        left = leftTemp;
+      }
     }
   }
 
-  console.log(result.reduce((a, b) => a + b));
-  return result.reduce((a, b) => a + b);
+  return closeSum;
 };
 // @lc code=end
 
+console.log(threeSumClosest([-1,2,1,-4], 1));
