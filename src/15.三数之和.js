@@ -14,7 +14,7 @@ var threeSum = function (nums) {
     return [];
   }
 
-  nums = nums.sort((a, b) => a - b);
+  nums.sort((a, b) => a - b);
 
   let arr = [];
   let n = nums.length;
